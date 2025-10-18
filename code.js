@@ -45,18 +45,20 @@ function onSelectDigits(event) {
   var days = selection.substring(0,2);
   var months = selection.substring(2,4);
   var years = selection.substring(4);
-  var dateString = days + "/" + months + "/" + years;
+  years = parseInt(years) >= 70 ? "19"+years : "20"+years
 
-  if (isDateValid(dateString)) {
-    selectedDateText.innerText = dateString;
+  var dateString = days + "/" + months + "/" + years;
+  selectedDateText.innerText = dateString;
+
+  if (isDateValid(days, months, years)) {
     selectedDateFeedbackText.innerText = "Is this correct?"
   } else {
-    selectedDateText.innerText = dateString;
     selectedDateFeedbackText.innerText = "Please input a valid date in format DD/MM/YY."
   }
 
-  function isDateValid(dateString) {
-    return !isNan(new Date(`${dateString.substring(4,6)}/${dateString.substring(2,4)}/${dateString.substring(0,2)}`));
+  function isDateValid(days, months, years) {
+    var date = new Date(`${years}/${months}/${days}`);
+    return !isNaN(date);
   }
 
 }
