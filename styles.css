@@ -64,9 +64,6 @@ header h3 {
     line-height: 1.75;
     font-family: monospace;
     resize: none;
-}
-
-textarea {
-  width: 100%;
-  height: 400px;
+    width: 100%;
+    height: 55%;
 }
