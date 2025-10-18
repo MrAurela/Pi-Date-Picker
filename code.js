@@ -5,19 +5,21 @@ var currentRow = 0;
 document.getElementById("button-up").onclick = onUpButtonPressed;
 document.getElementById("button-down").onclick = onDownButtonPressed;
 
-var piDigitsList = document.getElementById("pi-digits-list")
+var piDigitsList = document.getElementById("pi-digits-list");
+
+fetch("digits.txt").then((response)=>{
+    return response.text();
+}).then((text)=>{
+    piDigitsList.innerHTML = text;
+});
+
 piDigitsList.onselect = onSelectDigits;
+piDigitsList.onclick = onSelectDigits;
 piDigitsList.focus();
 piDigitsList.setSelectionRange(2, 8);
 
 var selectedDateText = document.getElementById("selected-date");
 var selectedDateFeedbackText = document.getElementById("selected-date-feedback");
-
-fetch("digits.txt").then((response)=>{
-    return response.text();
-}).then((text)=>{
-    document.getElementById('pi-digits-list').innerHTML = text;
-});
 
 function onUpButtonPressed()  {
     currentRow = Math.max(0, currentRow-5);
