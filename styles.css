@@ -1,51 +1,53 @@
 
 header {
     text-align: center;
+    margin-bottom: 3%;
+}
+
+h1 {
+    margin-bottom: 2px;
 }
 
 body {
     margin-left: 10%;
     margin-right: 10%;
-    background-color:aliceblue;
+    background-color:#f0f8ff;
     /* background-image: url(mathbackground.jpg); */
 
 }
 
 header h3 {
-    margin-top: 50px;
+    margin-top: 35px;
     margin-bottom: 2px;
 }
 
-.up-arrow, .down-arrow {
-    background-color: #706A67;
+.arrow {
+    background-color: #BFBAB8;
     border: none;
     color: white;
-    padding: 10px;
+    width: 99%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 24px;
-    margin-left: 48%;
     border-radius: 12px;
     position: relative;
-    /*
-    transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
-    */ 
+    user-select: none;
 
-    /* right: 50%; */
 }
 
-/*
-.down-arrow {
-    border-radius: 3px 0 0 3px; SMOOTHS THE CORNERS OF THE BOX
-    position: relative;
+.up {
+    padding: 15px 10px 8px 10px;
+    margin-bottom: 0.75%;
 }
-*/
 
-/* On hover, add a black background color with a little bit see-through */
-.up-arrow:hover, .down-arrow:hover {
-    background-color: rgba(0,0,0,0.8);
+.down {
+    padding: 2px 10px 15px 10px;
+    margin-top: 0.75%; 
+}
+
+.arrow:hover {
+    background-color: #706A67;
 }
 
 .jump-section {
@@ -58,6 +60,8 @@ header h3 {
 
 #pi-digits-list {
     font-size: 24px;
+    letter-spacing: 9px;
+    line-height: 1.75;
     font-family: monospace;
     resize: none;
 }
