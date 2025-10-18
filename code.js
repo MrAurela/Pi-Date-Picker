@@ -10,6 +10,12 @@ document.getElementById("pi-digits-list").setSelectionRange(2, 8);
 
 var selectedDateText = document.getElementById("selected-date");
 
+fetch("digits.txt").then((response)=>{
+    return response.text();
+}).then((text)=>{
+    document.getElementById('pi-digits-list').innerHTML = text;
+});
+
 function onUpButtonPressed()  {
     currentRow = Math.max(0, currentRow-5);
     var textView = document.getElementById("pi-digits-list");
@@ -27,7 +33,7 @@ function onSelectDigits(event) {
     event.target.selectionStart,
     event.target.selectionEnd,
   );
-  
+
   var days = selection.substring(0,2);
   var months = selection.substring(2,4);
   var years = selection.substring(4);
@@ -40,3 +46,4 @@ function onSelectDigits(event) {
     alert(`Invalid date: ${selection}`);
   }
 }
+
