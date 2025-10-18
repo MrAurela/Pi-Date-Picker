@@ -22,15 +22,11 @@ var selectedDateText = document.getElementById("selected-date");
 var selectedDateFeedbackText = document.getElementById("selected-date-feedback");
 
 function onUpButtonPressed()  {
-    currentRow = Math.max(0, currentRow-5);
-    var textView = document.getElementById("pi-digits-list");
-    textView.scrollTop = currentRow * 25;
+    piDigitsList.scrollTop = Math.max(0, piDigitsList.scrollTop-piDigitsList.clientHeight);
 }
 
 function onDownButtonPressed()  {
-    currentRow = currentRow+5;
-    var textView = document.getElementById("pi-digits-list");
-    textView.scrollTop = currentRow * 25;
+    piDigitsList.scrollTop = Math.min(piDigitsList.scrollHeight-piDigitsList.clientHeight, piDigitsList.scrollTop+piDigitsList.clientHeight);
 }
 
 function onSelectDigits(event) {
