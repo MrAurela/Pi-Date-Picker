@@ -1,14 +1,17 @@
 
 var currentRow = 0;
 
+// Button interactions
 document.getElementById("button-up").onclick = onUpButtonPressed;
 document.getElementById("button-down").onclick = onDownButtonPressed;
-document.getElementById("pi-digits-list").onselect = onSelectDigits;
 
-document.getElementById("pi-digits-list").focus();
-document.getElementById("pi-digits-list").setSelectionRange(2, 8);
+var piDigitsList = document.getElementById("pi-digits-list")
+piDigitsList.onselect = onSelectDigits;
+piDigitsList.focus();
+piDigitsList.setSelectionRange(2, 8);
 
 var selectedDateText = document.getElementById("selected-date");
+var selectedDateFeedbackText = document.getElementById("selected-date-feedback");
 
 fetch("digits.txt").then((response)=>{
     return response.text();
@@ -34,16 +37,27 @@ function onSelectDigits(event) {
     event.target.selectionEnd,
   );
 
+  if (selection.length != 6) {
+    piDigitsList.setSelectionRange(event.target.selectionStart, event.target.selectionStart+6);
+  }
+
+  // Date is assumed to have format DD/MM/YY:
   var days = selection.substring(0,2);
   var months = selection.substring(2,4);
   var years = selection.substring(4);
-
   var dateString = days + "/" + months + "/" + years;
 
-  if (true) {
+  if (isDateValid(dateString)) {
     selectedDateText.innerText = dateString;
+    selectedDateFeedbackText.innerText = "Is this correct?"
   } else {
-    alert(`Invalid date: ${selection}`);
+    selectedDateText.innerText = dateString;
+    selectedDateFeedbackText.innerText = "Please input a valid date in format DD/MM/YY."
   }
+
+  function isDateValid(dateString) {
+    return !isNan(new Date(`${dateString.substring(4,6)}/${dateString.substring(2,4)}/${dateString.substring(0,2)}`));
+  }
+
 }
 
