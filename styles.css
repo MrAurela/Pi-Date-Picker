@@ -1,3 +1,4 @@
+
 header {
     text-align: center;
 }
@@ -11,7 +12,8 @@ header h3 {
     margin-right: 20px;
 }
 
-input {
-    size: 4;
-
+#pi-digits-list {
+    font-size: 24px;
+    font-family: monospace;
+    resize: none;
 }
