@@ -49,9 +49,11 @@ function onSelectDigits(event) {
   selectedDateText.innerText = dateString;
 
   if (isDateValid(days, months, years)) {
+    selectedDateFeedbackText.style.color = '#000000';
     selectedDateFeedbackText.innerText = "Is this correct?"
   } else {
-    selectedDateFeedbackText.innerText = "Please input a valid date in format DD/MM/YY."
+    selectedDateFeedbackText.style.color = '#ff0033';
+    selectedDateFeedbackText.innerText = "Please input a valid date in format DD/MM/YY.";
   }
 
   function isDateValid(days, months, years) {
