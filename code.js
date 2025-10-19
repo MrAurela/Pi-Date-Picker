@@ -95,10 +95,10 @@ function onSelectDigits(event) {
 
   if (isDateValid(days, months, years)) {
     selectedDateFeedbackText.style.color = '#000000';
-    selectedDateFeedbackText.innerText = "Is this correct?"
+    selectedDateFeedbackText.innerText = `Your date is stored as PI-${event.target.selectionStart}:${selection.length}.`;
   } else {
     selectedDateFeedbackText.style.color = '#ff0033';
-    selectedDateFeedbackText.innerText = "Please input a valid date in format DD/MM/YY.";
+    selectedDateFeedbackText.innerText = `PI-${event.target.selectionStart}:${selection.length} is invalid PI-6 date.`;
   }
 
   function isDateValid(days, months, years) {
