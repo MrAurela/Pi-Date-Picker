@@ -1,5 +1,5 @@
 
-var currentRow = 0;
+var charactersLoaded = 1000;
 
 // Button interactions
 document.getElementById("button-up").onclick = onUpButtonPressed;
@@ -7,11 +7,42 @@ document.getElementById("button-down").onclick = onDownButtonPressed;
 
 var piDigitsList = document.getElementById("pi-digits-list");
 
-fetch("digits.txt").then((response)=>{
-    return response.text();
-}).then((text)=>{
-    piDigitsList.innerHTML = text;
-});
+let reader;        // The stream reader
+let decoder;       // Text decoder
+let done = false;  // Whether we've reached the end
+const chunkSize = 500; // Approximate number of characters per click
+
+async function initReader(filename) {
+  const response = await fetch(filename);
+  reader = response.body.getReader();
+  decoder = new TextDecoder();
+}
+
+async function readNextChunk() {
+  if (done) {
+    piDigitsList.textContent += '\n[End of file]';
+    return;
+  }
+
+  let text = '';
+  while (!done && text.length < chunkSize) {
+    const { value, done: streamDone } = await reader.read();
+    if (value) text += decoder.decode(value, { stream: true });
+    done = streamDone;
+  }
+
+  piDigitsList.textContent += text.slice(0, chunkSize);
+}
+
+// Initialize reader and load first chunk
+initReader('digits.txt')
+  .then(() => readNextChunk())
+  .catch(err => {
+    piDigitsList.textContent = 'Error: ' + err;
+  });
+
+// Add "Load more" button functionality
+document.getElementById('button-down').addEventListener('click', readNextChunk);
 
 piDigitsList.onselect = onSelectDigits;
 piDigitsList.onclick = onSelectDigits;
