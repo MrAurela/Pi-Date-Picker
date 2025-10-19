@@ -80,25 +80,61 @@ function onSelectDigits(event) {
     event.target.selectionEnd,
   );
 
-  if (selection.length != 6) {
+  /*if (selection.length != 6) {
     piDigitsList.setSelectionRange(event.target.selectionStart, event.target.selectionStart+6);
+  }*/
+
+  var days = "01";
+  var months = "01";
+  var years = "2025";
+  if (selection.length < 2) {
+    selectedDateFeedbackText.style.color = '#000000';
+    selectedDateFeedbackText.innerText = "Select substring representing your date in PI2, PI3, PI4, PI6, or PI8 format.";
+    selectedDateText.innerText = "DD/MM/YYYY";
+    return;
+  } else if (selection.length == 2) {
+    days = selection.substring(0,1);
+    months = selection.substring(1,2);
+  } else if (selection.length == 3) {
+    days = selection.substring(0,1);
+    months = selection.substring(1,3);
+    var option1 = isDateValid(days, months, years);
+    days = selection.substring(0,2);
+    months = selection.substring(2,3);
+    var option2 = isDateValid(days, months, years);
+    if (option1 && option2) {
+      selectedDateFeedbackText.style.color = '#ff0033';
+      selectedDateFeedbackText.innerText = `PI-${event.target.selectionStart}:${selection.length} cannot implicitly be converted to PI${selection.length}.`;
+      return;
+    } else  if (option1 || option2) {
+      if (option1) {
+        days = selection.substring(0,1);
+        months = selection.substring(1,3);
+      }
+    }
+  } else if (selection.length == 4) {
+    days = selection.substring(0,2);
+    months = selection.substring(2,4);
+  } else if (selection.length == 6 || selection.length == 8) {
+    // Date is assumed to have format DD/MM/YY or DD/MM/YYYY
+    days = selection.substring(0,2);
+    months = selection.substring(2,4);
+    years = selection.substring(4);
+    if (years.length == 2) years = parseInt(years) >= 70 ? "19"+years : "20"+years
+  } else  {
+    selectedDateFeedbackText.style.color = '#ff0033';
+    selectedDateFeedbackText.innerText = `PI${selection.length} standard is currently not supported.`;
+    selectedDateText.innerText = "DD/MM/YYYY";
+    return;
   }
 
-  // Date is assumed to have format DD/MM/YY:
-  var days = selection.substring(0,2);
-  var months = selection.substring(2,4);
-  var years = selection.substring(4);
-  years = parseInt(years) >= 70 ? "19"+years : "20"+years
-
-  var dateString = days + "/" + months + "/" + years;
-  selectedDateText.innerText = dateString;
-
+  selectedDateText.innerText = days.padStart(2,"0") + "/" + months.padStart(2,"0") + "/" + years;
   if (isDateValid(days, months, years)) {
     selectedDateFeedbackText.style.color = '#000000';
-    selectedDateFeedbackText.innerText = `Your date is stored as PI-${event.target.selectionStart}:${selection.length}.`;
+    selectedDateFeedbackText.innerText = `Your date is stored as PI${selection.length}-${event.target.selectionStart}.`;
   } else {
     selectedDateFeedbackText.style.color = '#ff0033';
-    selectedDateFeedbackText.innerText = `PI-${event.target.selectionStart}:${selection.length} is invalid PI-6 date.`;
+    selectedDateFeedbackText.innerText = `PI${selection.length}-${event.target.selectionStart} is invalid PI${selection.length} date.`;
   }
 
   function isDateValid(days, months, years) {
