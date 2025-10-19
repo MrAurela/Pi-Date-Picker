@@ -49,7 +49,8 @@ initReader('digits.txt')
 
 
 // Add "Load more" button functionality
-document.getElementById('button-down').addEventListener('click', readNextChunk);
+
+document.getElementById('button-up').disabled = true;
 
 piDigitsList.onselect = onSelectDigits;
 piDigitsList.onclick = onSelectDigits;
@@ -67,6 +68,8 @@ function onUpButtonPressed()  {
 
 function onDownButtonPressed()  {
     piDigitsList.scrollTop = Math.min(piDigitsList.scrollHeight-piDigitsList.clientHeight, piDigitsList.scrollTop+piDigitsList.clientHeight);
+    readNextChunk();
+    
     if (piDigitsList.scrollTop >= piDigitsList.scrollHeight - piDigitsList.clientHeight) document.getElementById('button-down').disabled = true;
     document.getElementById('button-up').disabled = false;
 }
