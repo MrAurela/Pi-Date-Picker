@@ -50,6 +50,11 @@ header h3 {
     background-color: #706A67;
 }
 
+.arrow:disabled {
+    background-color: #f0f8ff;
+    color: #f0f8ff;
+}
+
 .jump-section {
     margin-bottom: 5px;
 }
