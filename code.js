@@ -1,6 +1,4 @@
 
-var charactersLoaded = 1000;
-
 // Button interactions
 document.getElementById("button-up").onclick = onUpButtonPressed;
 document.getElementById("button-down").onclick = onDownButtonPressed;
@@ -63,10 +61,14 @@ var selectedDateFeedbackText = document.getElementById("selected-date-feedback")
 
 function onUpButtonPressed()  {
     piDigitsList.scrollTop = Math.max(0, piDigitsList.scrollTop-piDigitsList.clientHeight);
+    if (piDigitsList.scrollTop == 0) document.getElementById('button-up').disabled = true;
+    document.getElementById('button-down').disabled = false;
 }
 
 function onDownButtonPressed()  {
     piDigitsList.scrollTop = Math.min(piDigitsList.scrollHeight-piDigitsList.clientHeight, piDigitsList.scrollTop+piDigitsList.clientHeight);
+    if (piDigitsList.scrollTop >= piDigitsList.scrollHeight - piDigitsList.clientHeight) document.getElementById('button-down').disabled = true;
+    document.getElementById('button-up').disabled = false;
 }
 
 function onSelectDigits(event) {
