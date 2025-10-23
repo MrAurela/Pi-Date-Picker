@@ -79,7 +79,7 @@ function onSelectDigits(event) {
     event.target.selectionStart,
     event.target.selectionEnd,
   );
-  
+
   var days = "01";
   var months = "01";
   var years = "2025";
@@ -89,8 +89,8 @@ function onSelectDigits(event) {
   
   if (selection.length < 2) {
     selectedDateFeedbackText.style.color = '#000000';
-    selectedDateFeedbackText.innerText = "Select substring representing your date in PI2, PI3, PI4, PI6, or PI8 format.";
-    selectedDateText.innerText = "DD/MM/YYYY";
+    selectedDateFeedbackText.innerText = "Pick a date by clicking or dragging the cursor over matching PI substring (DDMMYY).";
+    selectedDateText.innerText = "__/__/____";
     return;
   } else if (selection.length == 2) {
     days = selection.substring(0,1);
