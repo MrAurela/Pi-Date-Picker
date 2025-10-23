@@ -39,9 +39,7 @@ with open("date_conversions_PI6.txt", "w") as file:
         file.write(days+"/"+months+"/"+years+": "+pi6_dates+"\n")
 
 
-# Digits-billion.txt
-# Among the first 10428747 digits of Pi:
-# Valid dates found: 37200 (100.0%)
-#Last date found at index 10428740: 120154
-
-# Digits.txt
+# Running for: Digits.txt
+# Among the first 10428747 letters of Pi string:
+#  - Valid dates found: 37200 (100.0%)
+#  - Last date (120154) found at index: 10428740
