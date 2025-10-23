@@ -71,14 +71,6 @@ header h3 {
     color: #f0f8ff;
 }
 
-.jump-section {
-    margin-bottom: 5px;
-}
-
-.jump-section p {
-    margin-right: 20px;
-}
-
 .digit-navigation {
     flex: 1 1 auto;
     display: flex;
@@ -95,6 +87,12 @@ header h3 {
     width: 100%;
     padding: 0;
     flex: 1 1 auto;
+}
+
+#give-up {
+    display: block;
+    margin-left: auto; 
+    margin-right: 0;
 }
 
 .embedded-file {
