@@ -30,7 +30,6 @@ body {
     flex-flow: column;
     width: auto;
     min-height: 100vh;
-    /* background-image: url(mathbackground.jpg); */
 }
 
 header h3 {
