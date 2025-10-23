@@ -95,9 +95,40 @@ header h3 {
     margin-right: 0;
 }
 
-.embedded-file {
-    margin: 0;
-    padding: 0;
-    width: auto;
-    height: 100vh;
+footer {
+    margin-top: 1%;
+    font-size: small;
+}
+
+.caption {
+    text-align: center;
+    margin: 1% 0 0 0;
+}
+
+.column {
+  float: left;
+  text-align: center;
+  margin: 0 0 0 0;
+}
+
+.left {
+  width: 37.5%;   
+}
+
+.right {
+  width: 37.5%;
+  float: right;
+}
+
+.middle {
+  width: 25%;
+  margin: 0 0 0 0;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
