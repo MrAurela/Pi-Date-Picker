@@ -96,3 +96,10 @@ header h3 {
     padding: 0;
     flex: 1 1 auto;
 }
+
+.embedded-file {
+    margin: 0;
+    padding: 0;
+    width: 99vw;
+    height: 100vh;
+}
