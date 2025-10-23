@@ -100,6 +100,6 @@ header h3 {
 .embedded-file {
     margin: 0;
     padding: 0;
-    width: 99vw;
+    width: auto;
     height: 100vh;
 }
