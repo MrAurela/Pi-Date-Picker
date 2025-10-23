@@ -17,7 +17,7 @@ with open("digits.txt", "r") as file:
 
     while len(date_str) == 6:
         if date_str in dates and dates[date_str] == "-":
-            dates[date_str] = f"PI8-{character_count-5}"
+            dates[date_str] = f"PI6-{character_count-5}"
 
         date_str = date_str[1:] + file.read(1)
         character_count += 1
