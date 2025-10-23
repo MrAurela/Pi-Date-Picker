@@ -79,14 +79,14 @@ function onSelectDigits(event) {
     event.target.selectionStart,
     event.target.selectionEnd,
   );
-
-  /*if (selection.length != 6) {
-    piDigitsList.setSelectionRange(event.target.selectionStart, event.target.selectionStart+6);
-  }*/
-
+  
   var days = "01";
   var months = "01";
   var years = "2025";
+  if (selection.length == 0) {
+    piDigitsList.setSelectionRange(event.target.selectionStart, event.target.selectionStart+6);
+  }
+  
   if (selection.length < 2) {
     selectedDateFeedbackText.style.color = '#000000';
     selectedDateFeedbackText.innerText = "Select substring representing your date in PI2, PI3, PI4, PI6, or PI8 format.";
