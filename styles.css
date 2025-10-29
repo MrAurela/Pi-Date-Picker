@@ -86,13 +86,13 @@ header h3 {
     display: block;
     margin-left: auto; 
     margin-right: 1.5%;
-    font-size: 1.15vw;
+    font-size: medium;
 }
 
 footer {
     margin-top: 1%;
     margin-bottom: 1%;
-    font-size: 1vw;
+    font-size: small;
 }
 
 .caption {
