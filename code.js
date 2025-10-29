@@ -9,7 +9,7 @@ let reader;
 let decoder;
 let done = false;
 let buffer = "";          // store leftover decoded text
-const chunkSize = 500;    // number of characters to display per click
+const chunkSize = 1000;    // number of characters to display per click
 
 async function initReader(filename) {
   const response = await fetch(filename);
